@@ -1,0 +1,46 @@
+﻿@using Clean_blog.Models;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('../../Uploads/img/@ViewBag.Home_header.Photo')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    @Html.Raw(ViewBag.Home_header.Title)
+                    @Html.Raw(ViewBag.Home_header.Title_content)
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview">                
+               @foreach (Home item in ViewBag.Home_text)
+               {
+                <a href="@Url.Action("index","post")">
+                      @Html.Raw(item.Title)
+                      @Html.Raw(item.Text)
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#">Start Bootstrap</a>
+                    @Html.Raw(item.Date.Value.ToString("MMMM dd,yyyy"))
+                </p>
+               }
+            </div>
+            <hr>
+            <!-- Pager -->
+            <div class="clearfix">
+                <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>

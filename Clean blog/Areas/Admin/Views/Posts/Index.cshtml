@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Clean_blog.Models.Post>
+
+@{
+    ViewBag.Title = "Post";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create","posts",null,new {@class="btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+           @Html.DisplayNameFor(model => model.Photo)"/>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.Raw(item.Title)
+        </td>
+        <td>
+            @Html.Raw( item.Text.Substring(0,100))
+        </td>
+        <td>
+            <img src="~/Uploads/@Html.DisplayFor(modelItem => item.Photo)" widht"100" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

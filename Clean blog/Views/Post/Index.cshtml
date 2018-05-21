@@ -1,0 +1,49 @@
+﻿@using Clean_blog.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <!-- Page Header -->
+<header class="masthead" style="background-image: url('../../Uploads/img/@ViewBag.Post_header.Photo')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    @Html.Raw(ViewBag.Post_header.Title)
+                    @Html.Raw(ViewBag.Post_header.Title_content)
+                    <span class="meta">
+                        Posted by
+                        <a href="#">Start Bootstrap</a>
+                        on August 24, 2017
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+               @{ int j = 0; }
+           
+                @foreach (Post item in ViewBag.Post_text)
+                {
+                    j++;
+                    @Html.Raw(item.Title)
+                    @Html.Raw(item.Text)
+                    <a href="#">
+                        <img class="img-fluid" src="~/Uploads/img/@item.Photo" alt="">
+                    </a>
+                 }
+                    Placeholder text by
+                    <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
+                    <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
+            </div>
+        </div>
+    </div>
+</article>
+<hr>
+
